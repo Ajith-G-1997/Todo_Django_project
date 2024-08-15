@@ -1,0 +1,31 @@
+{% extends 'index.html'%}
+{% block content %}
+<!-- Edit Modal HTML -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Task</title>
+</head>
+<body>
+    <h1>Update Task</h1>
+    
+    <!-- Form to update the task -->
+    <form method="post">
+        {% csrf_token %}
+        <div>
+            <label for="task">Task Name:</label>
+            <input type="text" id="task" name="task" value="{{ task.task }}" required>
+        </div>
+        <button type="submit">Update Task</button>
+        {% if error %}
+        <p style="color: red;">{{ error }}</p>
+        {% endif %}
+    </form>
+    
+    <a href="{% url 'index' %}">Back to Task List</a>
+</body>
+</html>
+
+{% endblock%}
